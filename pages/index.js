@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeCount } from "../../redux-store/countSlice";
 import Footer from "../Components/Footer";
+import { changeCount } from "../reduxStore/countSlice";
 import Form from "../Components/Form";
 import Header from "../Components/Header";
 import ReportTable from "../Components/ReportTable";
@@ -19,7 +19,7 @@ export default function Home() {
     setReports(newReport);
   };
 
-  const calulate = (obj) => {
+  const calculate = (obj) => {
     let outputResult = {
       location: obj.location,
       hourly_sale: generateCookiePerHr(
@@ -54,7 +54,7 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <Form />
+        <Form updateReport={updateReport} />
         <ReportTable hours={hours} reports={reports} />
       </main>
 

@@ -1,19 +1,30 @@
 export default function ReportTable(props) {
-  console.log("hours props", props.hours);
   return (
     <table className="mx-auto border-2 border-green-600 bg-green-300 min-w-full rounded-lg">
-      <tr>
+      <thead>
         <th>Location</th>
         {props.hours.map((hour) => {
-          return <th>{hour}</th>;
+          return <th key={Math.random()}>{hour}</th>;
         })}
         <th>Total</th>
-      </tr>
-      <tr>
-        <td className="text-center border border-black-300 bg-gray-50">x</td>
-        <td className="text-center border border-black-300 bg-gray-50">x</td>
-        <td className="text-center border border-black-300 bg-gray-50">x</td>
-      </tr>
+      </thead>
+      <tbody>
+        {props.reports.map((store) => {
+          return (
+            <tr className="odd:bg-gray-500" key={Math.random()}>
+              <td>{store.location}</td>
+              {store.hourly_sale.map((sale) => {
+                return <td>{sale}</td>;
+              })}
+              <td>
+                {store.hourly_sale.reduce((acc, cur) => {
+                  return acc + cur;
+                }, 0)}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 }
