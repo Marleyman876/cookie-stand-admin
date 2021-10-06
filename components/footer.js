@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function Footer() {
   const count = useSelector((state) => state.countSlice.value);
   return (
-    <footer className="p-3 bg-green-500">
+    <footer className="p-4 bg-green-500">
       <p> {count} Locations WorldWide</p>
     </footer>
   );
