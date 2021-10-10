@@ -7,10 +7,16 @@ import Form from "../Components/Form";
 import Header from "../Components/Header";
 import ReportTable from "../Components/ReportTable";
 import { hours } from "../data";
+import LoginForm from "../Components/LoginForm";
+import { useAuth } from "../context/auth";
+import useResource from "../hooks/useResource";
 
 export default function Home() {
-  const [reports, setReports] = useState([]);
-  const dispatch = useDispatch();
+  // const [reports, setReports] = useState([]);
+  // const dispatch = useDispatch();
+  const { resources } = useResource();
+  const { user, login, logout } = useAuth();
+  console.log("you are here", resources);
 
   const updateReport = (obj) => {
     let outputResult = calculate(obj);
@@ -46,16 +52,29 @@ export default function Home() {
     }
     return cookieSales;
   }
+
   return (
     <div>
-      <Head>
+      <head>
         <title>Cookie Stand Admin</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </head>
       <Header />
       <main>
-        <Form updateReport={updateReport} />
-        <ReportTable hours={hours} reports={reports} />
+        {user ? (
+          <>
+            <Form />
+            <ReportTable hours={hours} sales={resources} />
+            <button
+              onClick={logout}
+              className="w-3/4 p-3 mt-10 bg-gray-600 rounded-md"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <LoginForm />
+        )}
       </main>
 
       <Footer />

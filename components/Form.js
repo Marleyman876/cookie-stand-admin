@@ -1,7 +1,10 @@
 import { useState } from "react";
+import useResource from "../hooks/useResource";
 
 export default function Form(props) {
   const [items, setItems] = useState({});
+  const { createResource } = useResource();
+
   const handleChange = (e) => {
     const newItems = {
       ...items,
@@ -11,7 +14,7 @@ export default function Form(props) {
   };
   const createAstore = (e) => {
     e.preventDefault();
-    props.updateReport(items);
+    createResource(items);
   };
 
   return (
@@ -33,32 +36,32 @@ export default function Form(props) {
           ></input>
         </label>
 
-        <label for="minCustomers" className="text-xs w-full">
+        <label for="minimum_customers_per_hour" className="text-xs w-full">
           Minimum Customers{" "}
         </label>
         <input
           onChange={handleChange}
-          name="minCustomers"
+          name="minimum_customers_per_hour"
           type="number"
           className=""
         />
 
-        <label for="maxCustomers" className="text-xs w-full">
+        <label for="maximum_customers_per_hour" className="text-xs w-full">
           Maximum Customers per Hour
         </label>
         <input
           onChange={handleChange}
-          name="maxCustomers"
+          name="maximum_customers_per_hour"
           type="number"
           className=""
         />
 
-        <label for="avgCookies" className="text-xs w-full">
+        <label for="average_cookies_per_sale" className="text-xs w-full">
           Average Cookies per Sale
         </label>
         <input
           onChange={handleChange}
-          name="avgCookies"
+          name="average_cookies_per_sale"
           type="number"
           className=""
         />
