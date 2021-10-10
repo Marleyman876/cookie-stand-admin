@@ -5,9 +5,9 @@ export default function Header() {
     <header className="flex items-center justify-between p-4 bg-green-900 text-gray-50 text-2xl mb-7">
       <h1>Cookie Stand Admin</h1>
       <nav className="flex items-center justify-left space-x-10">
-        <Link href="/overview">
-          <a className="px-3 py-1.5 bg-gray-50 rounded-lg">Overview</a>
-        </Link>
+        {/* <Link href="/overview">
+          <a className="px-3 py-1.5 bg-red-50 rounded-lg">Overview</a>
+        </Link> */}
       </nav>
     </header>
   );
