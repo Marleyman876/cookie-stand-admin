@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import Footer from "../Components/Footer";
+import Footer from "../components/Footer";
 import { changeCount } from "../reduxStore/countSlice";
-import Form from "../Components/Form";
-import Header from "../Components/Header";
-import ReportTable from "../Components/ReportTable";
+import Form from "../components/Form";
+import Header from "../components/Header";
+import ReportTable from "../components/ReportTable";
 import { hours } from "../data";
-import LoginForm from "../Components/LoginForm";
+import LoginForm from "../components/LoginForm";
 import { useAuth } from "../context/auth";
 import useResource from "../hooks/useResource";
 
